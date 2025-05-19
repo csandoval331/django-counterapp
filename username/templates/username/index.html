@@ -1,0 +1,16 @@
+<h1>Hello from username app, {{ message}}</h1>
+
+<form action="/username/addusername" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" id="username" >
+
+    <input type="submit" value="Add">
+</form>
+
+{% if username_list %}
+    <ul>
+    {% for user in username_list %}
+        <li>{{user.id}} <a href="/username/removeusername/{{user.id}}">{{user}}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
